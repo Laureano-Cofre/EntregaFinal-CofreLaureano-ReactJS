@@ -1,15 +1,20 @@
 import { createContext } from "react";
 
-
-//Creamos un contexto
 const CartContext = createContext()
 
-//Envolvemos todos los componentes dentro de este 
-const CartProvider = () => {
+const CartProvider = ({ children }) => {
 
-    return (
-        <div></div>
+    const saludo = "Hola Loco!"
+
+    const saludando = () => {
+        alert("Hola mundo!")
+    }
+    
+    return(
+        <CartContext.Provider value = { { saludo, saludando}}>
+            { children }
+        </CartContext.Provider>
     )
 }
 
-export { CartProvider, CartContext }
+export { CartProvider, CartContext}
