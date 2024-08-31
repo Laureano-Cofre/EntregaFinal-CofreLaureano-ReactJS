@@ -1,0 +1,25 @@
+.navbar {
+  background-color: #f8f9fa;
+}
+
+.navbar-brand img {
+  height: 40px;
+}
+
+.navbar-nav .nav-link {
+  color: #000;
+  margin-right: 15px;
+}
+
+.navbar-toggler-icon {
+  color: #000;
+}
+
+.cart-widget {
+  display: flex;
+  align-items: center;
+}
+
+.cart-widget p {
+  margin: 0 0 0 5px;
+}

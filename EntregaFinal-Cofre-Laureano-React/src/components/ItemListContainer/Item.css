@@ -1,0 +1,48 @@
+.producto {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  
+  .producto img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .producto h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+  }
+  
+  .producto p {
+    font-size: 1em;
+    margin: 5px 0;
+  }
+  
+  .producto .precioProducto {
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  .producto button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .producto button:hover {
+    background-color: #0056b3;
+  }
+  
+  .producto:hover {
+    transform: scale(1.05);
+  }
+  

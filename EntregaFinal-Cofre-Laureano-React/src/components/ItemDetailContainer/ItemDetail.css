@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Oswald', sans-serif;
+  }
+p {
+    line-height: 1.8;
+
+}
+
+.catalogo
+{ display: flex;}
+
+
+.detail {
+    margin-top: 200px;
+    display: flex;
+    justify-content:center;
+    max-width: 40%;
+    padding: 10px;
+   margin-left: 550px;
+    margin-bottom: 20px;
+    box-shadow: 2px 6px 3px 3px rgba(0, 0, 0, 0.3);
+    
+   
+    
+}
+.detalles { display: block;}
