@@ -1,20 +1,28 @@
-import { createContext } from "react";
+// CartContext.jsx
+import React, { createContext, useState } from 'react';
 
-const CartContext = createContext()
+// Crear contexto
+export const CartContext = createContext();
 
-const CartProvider = ({ children }) => {
+export const CartProvider = ({ children }) => {
+  const [carrito, setCarrito] = useState([]);
 
-    const saludo = "Hola Loco!"
 
-    const saludando = () => {
-        alert("Hola mundo!")
-    }
-    
-    return(
-        <CartContext.Provider value = { { saludo, saludando}}>
-            { children }
-        </CartContext.Provider>
-    )
-}
+  const agregarProducto = (producto) => {
+    setCarrito([...carrito, producto]);
+  };
 
-export { CartProvider, CartContext}
+
+  const cantidadTotal = () => {
+    const totalProductos = carrito.reduce ( ( total, productoCarrito) => total + productoCarrito.cantidad, 0)
+    return totalProductos;
+  };
+
+  console.log(carrito)
+
+  return (
+    <CartContext.Provider value={{ carrito, agregarProducto, cantidadTotal }}>
+      {children}
+    </CartContext.Provider>
+  );
+};
