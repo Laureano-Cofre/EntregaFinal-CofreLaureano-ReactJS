@@ -18,10 +18,18 @@ export const CartProvider = ({ children }) => {
     return totalProductos;
   };
 
-  console.log(carrito)
 
+  const precioTotal = () => {
+    const precio = carrito.reduce( (total, productoCarrito) => total + ( productoCarrito.cantidad * productoCarrito.precio), 0)
+    return precio
+  }
+
+  const borrarProducto = 
+  
+  console.log(carrito)
+  
   return (
-    <CartContext.Provider value={{ carrito, agregarProducto, cantidadTotal }}>
+    <CartContext.Provider value={{ carrito, agregarProducto, cantidadTotal, precioTotal }}>
       {children}
     </CartContext.Provider>
   );
