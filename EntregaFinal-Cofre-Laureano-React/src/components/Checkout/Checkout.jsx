@@ -5,8 +5,7 @@ const Checkout = () => {
   const { carrito, precioTotal } = useContext(CartContext);
 
   const handleCheckout = () => {
-    // Aquí puedes implementar la lógica para procesar el pago
-    alert("Compra realizada con éxito!");
+    alert("¡Gracias por tu compra! Nos pondremos en contacto contigo por correo electrónico para finalizar los detalles.");
   };
 
   return (
