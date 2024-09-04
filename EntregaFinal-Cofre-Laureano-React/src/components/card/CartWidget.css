@@ -1,11 +1,10 @@
 .cart-widget {
-    display: flex;
-    align-items: center;
-    color: #000;
-  }
-  
-  .cart-widget p {
-    margin: 0 0 0 5px;
-    font-size: 1.2em;
-  }
-  
+  display: flex;
+  align-items: center;
+  color: #000;
+}
+
+.cart-widget p {
+  margin: 0 0 0 5px;
+  font-size: 1.2em;
+}

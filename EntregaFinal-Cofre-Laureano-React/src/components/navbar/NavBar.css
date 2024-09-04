@@ -1,18 +1,25 @@
 .navbar {
   background-color: #f8f9fa;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
 }
 
 .navbar-brand img {
   height: 40px;
 }
 
-.navbar-nav .nav-link {
-  color: #000;
-  margin-right: 15px;
+.navbar-nav {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
 }
 
-.navbar-toggler-icon {
+.navbar-nav .nav-link {
   color: #000;
+  margin: 0 15px;
+  font-size: 1.2em;
 }
 
 .cart-widget {
@@ -22,4 +29,5 @@
 
 .cart-widget p {
   margin: 0 0 0 5px;
+  font-size: 1.2em;
 }
