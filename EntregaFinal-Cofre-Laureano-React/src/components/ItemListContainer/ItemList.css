@@ -12,7 +12,7 @@
 }
 
 .detalle-producto img {
-  width: 200px; /* Tamaño uniforme */
+  width: 200px;
   height: auto;
   border-radius: 10px;
 }

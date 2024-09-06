@@ -7,7 +7,7 @@
   }
   
   .checkout-item img {
-    width: 100px; /* Mantener el mismo tamaño que en Cart */
+    width: 100px;
     height: auto;
     border-radius: 10px;
   }

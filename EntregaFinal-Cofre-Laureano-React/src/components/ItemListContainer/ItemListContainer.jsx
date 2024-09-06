@@ -1,42 +1,48 @@
 import './ItemListContainer.css';
-import data from "../../data/data.json";
 import { useState, useEffect } from 'react';
 import ItemList from './ItemList';
 import { useParams } from 'react-router-dom';
+import { getDocs, collection, query, where } from 'firebase/firestore';
+import db from '../../db/db.js';
 
 const ItemListContainer = () => {
   const [productos, setProductos] = useState([]);
   const { idCategoria } = useParams();
 
+  const getProducts = async () => {
+    const productsRef = collection(db, "productos");
+    const dataDb = await getDocs(productsRef);
+    const data = dataDb.docs.map((productDb) => ({
+      id: productDb.id,
+      ...productDb.data(),
+    }));
+    setProductos(data);
+  };
+
+  const getProductsByCategory = async () => {
+    const productsRef = collection(db, "productos");
+    const q = query(productsRef, where("categoria", "==", idCategoria));
+    const dataDb = await getDocs(q);
+
+    const data = dataDb.docs.map((productDb) => ({
+      id: productDb.id,...productDb.data(),
+    }));
+    setProductos(data);
+  };
+
   useEffect(() => {
-    const obtenerProductos = async () => {
-      try {
-        // Simular una llamada asíncrona para cargar los productos
-        const respuesta = await new Promise((resolve) => {
-          setTimeout(() => resolve(data), 1000);
-        });
-
-        if (idCategoria) {
-          const productosFiltrados = respuesta.filter((producto) => producto.categoria === idCategoria);
-          setProductos(productosFiltrados);
-        } else {
-          setProductos(respuesta);
-        }
-      } catch (error) {
-        console.log(error);
-      } finally {
-        console.log("finalizó la promesa");
-      }
-    };
-
-    obtenerProductos();
-  }, [idCategoria]);
+    if (idCategoria) {
+      getProductsByCategory(); 
+    } else {
+      getProducts();
+    }
+  }, [idCategoria]); 
 
   return (
     <div className='catalogo'>
       <ItemList productos={productos} />
     </div>
   );
-}
+};
 
 export default ItemListContainer;

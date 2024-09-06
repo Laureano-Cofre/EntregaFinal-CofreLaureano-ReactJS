@@ -1,4 +1,3 @@
-// ItemDetail.jsx
 import React, { useContext } from 'react';
 import ItemCount from '../ItemCount/ItemCount';
 import "./ItemDetail.css";
