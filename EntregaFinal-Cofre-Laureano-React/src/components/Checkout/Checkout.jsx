@@ -1,12 +1,29 @@
-import React, { useContext } from 'react';
+// Checkout.jsx
+
+import React, { useContext, useState } from 'react';
 import { CartContext } from '../../context/CartContext';
-import "./Checkout.css"
+import "./Checkout.css";
 
 const Checkout = () => {
-  const { carrito, precioTotal } = useContext(CartContext);
+  const { carrito, precioTotal, vaciarCarrito } = useContext(CartContext);
+  const [formData, setFormData] = useState({ nombre: '', telefono: '', email: '' });
+  const [notification, setNotification] = useState('');
+
+  const handleChangeInput = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
 
   const handleCheckout = () => {
-    alert("¡Gracias por tu compra! Nos pondremos en contacto contigo por correo electrónico para finalizar los detalles.");
+
+    vaciarCarrito();
+
+    setNotification("¡Gracias por tu compra! Nos pondremos en contacto contigo por correo electrónico para finalizar los detalles.");
+
+    setTimeout(() => setNotification(''), 3000);
   };
 
   return (
@@ -22,7 +39,32 @@ const Checkout = () => {
         </ul>
       ))}
       <h2>Total a Pagar: ${precioTotal()}</h2>
-      <button onClick={handleCheckout}>Finalizar Compra</button>
+      
+
+      <form onSubmit={(e) => { e.preventDefault(); handleCheckout(); }}>
+        <div>
+          <label>
+            Nombre:
+            <input type="text" name="nombre" value={formData.nombre} onChange={handleChangeInput} required />
+          </label>
+        </div>
+        <div>
+          <label>
+            Teléfono:
+            <input type="tel" name="telefono" value={formData.telefono} onChange={handleChangeInput} required />
+          </label>
+        </div>
+        <div>
+          <label>
+            Email:
+            <input type="email" name="email" value={formData.email} onChange={handleChangeInput} required />
+          </label>
+        </div>
+        <button type="submit">Finalizar Compra</button>
+      </form>
+      
+
+      {notification && <div className="notification">{notification}</div>}
     </div>
   );
 };
