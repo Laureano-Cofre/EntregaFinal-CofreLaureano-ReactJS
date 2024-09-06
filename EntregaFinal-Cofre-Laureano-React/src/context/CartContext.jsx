@@ -1,6 +1,5 @@
 import React, { createContext, useState } from 'react';
 
-// Crear contexto
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
@@ -10,6 +9,7 @@ export const CartProvider = ({ children }) => {
     const productoExistente = carrito.find(item => item.id === producto.id);
 
     if (productoExistente) {
+
       setCarrito(
         carrito.map(item =>
           item.id === producto.id
@@ -18,13 +18,16 @@ export const CartProvider = ({ children }) => {
         )
       );
     } else {
+
       setCarrito([...carrito, producto]);
     }
   };
 
+
   const eliminarProducto = (idProducto) => {
     setCarrito(carrito.filter(item => item.id !== idProducto));
   };
+
 
   const aumentarCantidad = (idProducto) => {
     setCarrito(
@@ -36,6 +39,7 @@ export const CartProvider = ({ children }) => {
     );
   };
 
+
   const disminuirCantidad = (idProducto) => {
     setCarrito(
       carrito.map(item =>
@@ -46,16 +50,26 @@ export const CartProvider = ({ children }) => {
     );
   };
 
+
   const cantidadTotal = () => {
     return carrito.reduce((total, productoCarrito) => total + productoCarrito.cantidad, 0);
   };
+
 
   const precioTotal = () => {
     return carrito.reduce((total, productoCarrito) => total + (productoCarrito.cantidad * productoCarrito.precio), 0);
   };
 
   return (
-    <CartContext.Provider value={{ carrito, agregarProducto, eliminarProducto, aumentarCantidad, disminuirCantidad, cantidadTotal, precioTotal }}>
+    <CartContext.Provider value={{ 
+      carrito, 
+      agregarProducto, 
+      eliminarProducto, 
+      aumentarCantidad, 
+      disminuirCantidad, 
+      cantidadTotal, 
+      precioTotal 
+    }}>
       {children}
     </CartContext.Provider>
   );

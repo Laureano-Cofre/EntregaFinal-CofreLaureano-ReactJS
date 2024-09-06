@@ -1,4 +1,3 @@
-// ItemCount.jsx
 import React, { useState } from 'react';
 import "./ItemCount.css";
 
@@ -6,21 +5,15 @@ const ItemCount = ({ stock, agregarAlCarrito }) => {
   const [count, setCount] = useState(1);
 
   const aumentar = () => {
-    setCount((prevCount) => {
-      if (prevCount < stock) {
-        return prevCount + 1;
-      }
-      return prevCount; 
-    });
+    if (count < stock) {
+      setCount(count + 1);
+    }
   };
 
   const disminuir = () => {
-    setCount((prevCount) => {
-      if (prevCount > 1) {
-        return prevCount - 1;
-      }
-      return prevCount; 
-    });
+    if (count > 1) {
+      setCount(count - 1);
+    }
   };
 
   return (
@@ -31,6 +24,6 @@ const ItemCount = ({ stock, agregarAlCarrito }) => {
       <button onClick={() => agregarAlCarrito(count)}>Agregar al carrito</button>
     </div>
   );
-}
+};
 
 export default ItemCount;
